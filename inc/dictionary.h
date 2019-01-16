@@ -5,6 +5,7 @@
 #include<string>
 #include<set>
 #include<fstream>
+#include"error.h"
 
 class Dictionary
 {
@@ -14,15 +15,22 @@ public:
   Dictionary (const std:: string &fname)//const prevents unwated modifications
   {
     std::fstream wlist(fname.c_str());
-    if(!wlist.is_open()) std::cout<<"Error opening Dictionary\n";
+
+    if(!wlist.is_open())
+    {
+        throw ScheckError("Error opening Dictionary "+fname);
+    }
 
     std::string word;
     while(std::getline(wlist,word))
     {
       std::cout<<word<<std::endl;
-      mWords.insert("word");
+      mWords.insert(word);
     }
-    if(!wlist.eof()) std::"Dictionary not read fully\n";
+    if(!wlist.eof())
+    {
+        throw ScheckError( "Error reading dictionary file " + fname );
+    }
   }
   bool check (const std:: string &word)//passing by reference prevents copying overhead
   {
