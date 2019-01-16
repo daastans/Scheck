@@ -14,13 +14,15 @@ public:
   Dictionary (const std:: string &fname)//const prevents unwated modifications
   {
     std::fstream wlist(fname.c_str());
+    if(!wlist.is_open()) std::cout<<"Error opening Dictionary\n";
+
     std::string word;
     while(std::getline(wlist,word))
     {
       std::cout<<word<<std::endl;
       mWords.insert("word");
-
     }
+    if(!wlist.eof()) std::"Dictionary not read fully\n";
   }
   bool check (const std:: string &word)//passing by reference prevents copying overhead
   {
