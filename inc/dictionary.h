@@ -14,14 +14,18 @@ public:
   Dictionary (const std:: string &fname)//const prevents unwated modifications
   {
     std::fstream wlist(fname.c_str());
-    std::sring word;
+    std::string word;
     while(std::getline(wlist,word))
     {
+      std::cout<<word<<std::endl;
       mWords.insert("word");
+
     }
   }
   bool check (const std:: string &word)//passing by reference prevents copying overhead
   {
+    std::cout<<"The word recieved "<<word<<std::endl;
+    std::cout<<"iterator "<<&(*mWords.find(word))<<" End is "<<&(*mWords.end())<<std::endl;
     return mWords.find(word)!=mWords.end();
     //if word is not found find() func returns an iterator  which points to the end() of the set
 
