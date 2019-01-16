@@ -3,14 +3,28 @@
 
 #include<iostream>
 #include<string>
+#include<set>
+#include<fstream>
 
 class Dictionary
 {
+private:
+  std::set<std::string> mWords;
 public:
-  Dictionary (const std:: string &fname){} //const prevents unwated modifications
+  Dictionary (const std:: string &fname)//const prevents unwated modifications
+  {
+    std::fstream wlist(fname.c_str());
+    std::sring word;
+    while(std::getline(wlist,word))
+    {
+      mWords.insert("word");
+    }
+  }
   bool check (const std:: string &word)//passing by reference prevents copying overhead
   {
-    return false;
+    return mWords.find(word)!=mWords.end();
+    //if word is not found find() func returns an iterator  which points to the end() of the set
+
   }
 };
 #endif
