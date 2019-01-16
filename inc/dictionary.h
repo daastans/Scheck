@@ -1,3 +1,6 @@
+#ifndef INC_DICTIONARY_H
+#define INC_DICTIONARY_H
+
 #include<iostream>
 #include<string>
 
