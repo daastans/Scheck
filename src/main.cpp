@@ -22,7 +22,7 @@ int main() {
             if(d.check(word))
             {std::cout<<word<<" is okay"<<std::endl;}
             else
-            {std::cout<<word<<" is Misspelled"<<std::endl;}
+            {std::cout<<word<<" is Misspelled at "<<p.LineNo()<<std::endl;}
         }
     }
     catch (const ScheckError &e)
