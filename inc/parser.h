@@ -6,16 +6,20 @@
 class Parser
 {
 private:
-    std::istream& mIn;          //You cannot copy istream so you have to take it as reference although you caould have used pointer
+    std::istream& mIn;          //You can't copy, take it as reference OR pointer
     bool ReadLine();
+    char NextChar();
+    enum State {stInSpace,stInWord,stInNum};
+    State mState;
     std::string mLine;
-    unsigned int mLineNo;
+    unsigned int mLineNo,mPos;
     std::istringstream mIs;
 public:
   Parser(std::istream &is);
   std::string NextWord();
   unsigned int LineNo() const;
   std::string Context() const;
+
 
 };
 
